@@ -1,12 +1,19 @@
 apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
-  name: "my-demo-app"
+  name: my-demo-app
   annotations:
-    github.com/project-slug: kripa-sarvaiya/my-demo-app
+    # --- CHANGE #1: ADD THIS LINE ---
+    # This tells the plugin WHICH repo to look at.
+    github.com/project-slug: 'kripa-sarvaiya/my-demo-app'
+
+    # This one you already did. It links your login to your user.
+    github.com/user: 'kripa-sarvaiya' 
 spec:
   type: service
-  owner: user:default/guest
+  # --- CHANGE #2: FIX THIS LINE ---
+  # This makes YOU the owner, not 'guest'.
+  owner: 'user:default/kripa-sarvaiya' 
   lifecycle: experimental
-  dependsOn: 
-    - "resource:my-demo-app-ec2"
+  # You can also delete the 'dependsOn' block to fix that warning.
+  dependsOn: []
